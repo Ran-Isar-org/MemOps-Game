@@ -28,8 +28,8 @@ for (let card = 0; card < number_of_cards/2; card++) {
     image = (data["message"])
     let pos1 = positions.pop()
     let pos2 = positions.pop()
-    const card1 = new Card(card, image, pos1, pos2, false)
-    const card2 = new Card(card, image, pos2, pos1, false)
+    const card1 = new Card(card, image, pos1, pos2)
+    const card2 = new Card(card, image, pos2, pos1)
     pos_to_card.set(pos1, card1)
     pos_to_card.set(pos2, card2)
 }
@@ -111,12 +111,10 @@ for (let index = 0; index < number_of_cards; index++) {
                         console.log("yay")
                     }
                     else{
-                        chosen_pair[0].card_back.style.display = "none"
-                        chosen_pair[1].card_back.style.display = "none"
-                        chosen_pair[0].card_front.style.display = "flex"
-                        chosen_pair[1].card_front.style.display = "flex"
-                        chosen_pair[0].flipped = false
-                        chosen_pair[1].flipped = false
+                        chosen_pair.forEach(pair => {
+                            pair.card_back.style.display = "None"
+                            pair.card_front.style.display = "flex"
+                        });
                         chosen_pair=[]
                         Card.selected -= 2
                         console.log("NAH")
