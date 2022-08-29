@@ -1,21 +1,29 @@
-// import {Card} from '.Card';
+import {Card} from '/js/Card.js';
 
 
 
 const number_of_cards = 46
 const positions = []
+const pos_to_card = new Map()
 for (let pos = 0; pos < number_of_cards; pos++) {
     positions.push(pos)
 }
 positions.sort(function() { return 0.5 - Math.random();})
+
 console.log(positions)
+
 const cols = (number_of_cards > 10 ? 10 : number_of_cards)
 const rows = Math.round(number_of_cards / cols)
 
-// for (let card = 0; card < number_of_cards/2; card++) {
-//     const card1 = new Card(card, "IMG", Math.random(number_of_cards),false)
-//     const card2 = new Card(card, "IMG", Math.random(number_of_cards),false)
-// }
+for (let card = 0; card < number_of_cards/2; card++) {
+    fetch('https://dog.ceo/api/breeds/image/random')
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+    let pos1 = positions.pop()
+    let pos2 = positions.pop()
+    const card1 = new Card(card, "IMG", pos1,false)
+    const card2 = new Card(card, "IMG", pos2,false)
+}
 
 let card_number = 0
 
