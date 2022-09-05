@@ -1,7 +1,7 @@
 import {Card} from '/js/Card.js';
 
 
-const number_of_cards = 46
+const number_of_cards = 6
 const positions = []
 const images = [] 
 const pos_to_card = new Map()
@@ -46,18 +46,17 @@ for (let index = 0; index < number_of_cards; index++) {
     const card_front = document.createElement("div")
     card_obj.card_back = card_back
     card_obj.card_front = card_front
-    card_back.className = "card col-xl col-l border-dark rounded bg-light"
-    card_front.className = "card col-xl col-l border-dark rounded bg-light"
+    card_back.className = "card col-xl col-l border-dark rounded bg-dark p-1 m-1"
+    card_front.className = "card col-xl col-l border-dark rounded bg-dark p-1 m-1"
     card_back.id = `card-back-${card_obj.pos}`
     card_front.id = `card-front-${card_obj.pos}`
-    card_back.style = "width: 10rem;"
-    card_front.style = "width: 10rem;"
     const img_back = document.createElement("img")
     const img_front = document.createElement("img")
     console.log(card_obj.img)
     img_back.src = card_obj.img
     img_front.src = "https://toppng.com/uploads/preview/question-mark-icon-png-1155224288245ptwi4q2v.png"
-    img_back.className = "card-img-top img-fluid h-100 w-100"
+    img_back.className = "card-img-top h-100 w-100 img-test"
+    img_front.className = "card-img-top h-100 w-100 img-test"
     card_back.appendChild(img_back)
     card_front.appendChild(img_front)
     card_back.style.display = "none"
@@ -69,6 +68,7 @@ function sleep(milliseconds) {
     return new Promise(resolve => setTimeout(resolve, milliseconds));  
  }  
 
+var score = document.getElementById("score");
 var chosen_pair=[]
 for (let index = 0; index < number_of_cards; index++) {
     const card_obj = pos_to_card.get(index)
@@ -88,7 +88,6 @@ for (let index = 0; index < number_of_cards; index++) {
         card_back.style.display = "flex"
         card_obj.flipped = true
         Card.selected++
-        console.log(Card.pairs.length)
         if (chosen_pair.length >=3){
             chosen_pair.forEach(pair => {
                 pair.card_back.style.display = "None"
@@ -128,3 +127,4 @@ for (let index = 0; index < number_of_cards; index++) {
         
     }
 }
+setInterval(()=> score.innerHTML = Card.pairs.length/2 +"" ,1000/30)
