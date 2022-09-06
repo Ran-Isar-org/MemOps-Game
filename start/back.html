@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>back</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/start/back.css">
+</head>
+
+<body>
+    
+    <input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">
+    
+    <div id='dialog' class="pop-up">
+      <label id="dlg-back" for="dialog_state"></label>
+      <div id='dlg-wrap'>
+        <label id="dlg-close" for="dialog_state"><i class="icon ion-ios-close-empty"></i></label>
+        <h2 id='dlg-header'> Hi! Welcome to MemOps Game</h2>
+        
+        <form>
+            <div class="form-group">
+                <label for="name"> <b>What's your name?</b> </label>
+                <input required type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="cards-number"> <b>How many cards do you want to play with?</b> </label>
+                <input required type="number" class="form-control" id="cards-number" name="cards-number">
+            </div>
+            
+            <!-- RADIO BUTTONS -->
+            <!-- <div>
+                 
+                <label for="category"> <b> Choose Game category: </b> </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" id="dogs" value="dogs" checked>
+                    <label class="form-check-label" for="dogs">
+                        dogs
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" id="cats" value="cats">
+                    <label class="form-check-label" for="cats">
+                        cats
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="category" id="babys" value="babys">
+                    <label class="form-check-label" for="babys">
+                        babys
+                    </label>
+                </div>
+            </div> -->
+
+            <button type="submit" class="btn btn-primary">let's start playing!</button>
+
+        </form>
+        
+        
+      </div>
+
+    </div>
+    
+    <!-- The Game will be placed here -->
+    <main id='main' class='main_area'>
+
+        <div class='center'>
+        <!-- Replace the Button with the game div\script -->
+        <label hidden id="batata" class="button" for="dialog_state"><i class="icon ion-ios-upload-outline
+          "></i> Start Playing</label>
+      </div>
+    <div id='console'></div>
+    </main> 
+    
+    
+    <script
+    src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+    <script type="module" src="/start/js/back.js"></script>
+</body>
+
+</html>
