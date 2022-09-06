@@ -1,5 +1,10 @@
 import {Card} from '/js/Card.js';
 
+import {StartTimer,StopTimer, ResetTimer} from '/js/timer.js';
+
+//import few functions from timer.js
+
+let finished = false;
 
 const number_of_cards = 6
 const positions = []
@@ -70,6 +75,9 @@ function sleep(milliseconds) {
 
 var score = document.getElementById("score");
 var chosen_pair=[]
+
+let click_count = 0;
+
 for (let index = 0; index < number_of_cards; index++) {
     const card_obj = pos_to_card.get(index)
     
@@ -82,7 +90,13 @@ for (let index = 0; index < number_of_cards; index++) {
     //     card_front.style.display = "flex"
     // }
 
-    card_front.onclick = foo => {
+    card_front.onclick = foo => {  
+        if (click_count == 0) {
+            StartTimer();
+        }
+        
+        click_count++;
+        
         chosen_pair.push(card_obj)
         card_front.style.display = "none"
         card_back.style.display = "flex"
@@ -121,10 +135,58 @@ for (let index = 0; index < number_of_cards; index++) {
                 }
                 if (Card.pairs.length == number_of_cards){
                     console.log("winner")
+                    finished = true;
+                    StopTimer()
+
+                    // var oldelement = document.getElementById('navbarNav')
+
+                    // finish game score and play again button
+                    let finish = document.createElement("div")
+                    finish.id = "finish"
+                    finish.className = "collapse navbar-collapse finish"
+                    finish.innerHTML = `<label><h4>Game Finished!</h4>you did it in ${minutes.textContent} minutes, and ${seconds.textContent} seconds!</label>`
+
+                    let elem = document.createElement("html")
+                    elem.id = "elem"
+                    elem.appendChild(finish)
+
+
+                    // add play again button
+                    let play_again = document.createElement("button")
+                    play_again.id = "play_again_btn"
+                    play_again.className = "btn btn-primary"
+                    play_again.textContent = "Play Again"
+                    
+                    finish.appendChild(play_again)
+                    document.getElementById('navbarNav').innerHTML = elem.innerHTML
+
+                    document.getElementById("play_again_btn").addEventListener("click", function(){
+                        ResetGame();
+                        console.log("play again");
+                    })
                 }
             })
         }
         
     }
 }
-setInterval(()=> score.innerHTML = Card.pairs.length/2 +"" ,1000/30)
+
+if (!finished) {
+    setInterval(()=> score.innerHTML = Card.pairs.length/2 +"" ,1000/30)
+}
+
+
+// isar todo
+function ResetGame() {
+    // reset timer
+    console.log("reset timer");
+
+    // reset cards
+    console.log("reset score");
+
+    // reset score
+    console.log("reset score");
+
+    // reload - for testing
+    location.reload();
+}
