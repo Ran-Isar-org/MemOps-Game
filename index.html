@@ -8,17 +8,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="start/back.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-        <img src="img/2e51935e7f894b05a766dd8865626ee1.png" alt="" width="100" height="100">
+        <a href="/"> <img src="img/2e51935e7f894b05a766dd8865626ee1.png"  alt="" width="100" height="100"> </a> 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+              <li class="nav-item">
+                <div class="nav-link active">
+                    <label id="player_name"></label>
+                </div>
+              </li>
               <li class="nav-item">
                 <div class="nav-link active">
                     <label id="minutes">00</label>:<label id="seconds">00</label>
@@ -41,13 +47,77 @@
         <div id="Board" class="p-2" style="float: center;">
         </div>
     </div>
+
+    <input type="checkbox" name="dialog_state" id="dialog_state" class="dialog_state">
+    
+    <div id='dialog' class="pop-up">
+      <label id="dlg-back" for="dialog_state"></label>
+      <div id='dlg-wrap'>
+        <label id="dlg-close" for="dialog_state"><i class="icon ion-ios-close-empty"></i></label>
+        <h2 id='dlg-header'> Hi! Welcome to MemOps Game</h2>
+        
+        <form>
+            <div class="form-group">
+                <label for="name"> <b>What's your name?</b> </label>
+                <input required type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="cards-number"> <b>How many cards do you want to play with?</b> </label>
+                <input required type="number" class="form-control" id="cards-number" name="cards-number">
+            </div>
+            
+            <!-- RADIO BUTTONS -->
+            <div>
+                 
+                <label for="category"> <b> Choose Game category: </b> </label>
+                <div class="form-check col-2 ran">
+                    <input class="form-check-input" type="radio" name="category" id="dogs" value="dog" checked>
+                    <label class="form-check-label" for="dogs">
+                        dogs
+                    </label>
+                </div>
+                <div class="form-check col-2 ran">
+                    <input class="form-check-input" type="radio" name="category" id="cats" value="cat">
+                    <label class="form-check-label" for="cats">
+                        cats
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">let's start playing!</button>
+
+        </form>
+        
+        
+      </div>
+
+    </div>
+    
+    <!-- The Game will be placed here -->
+    <main id='main' class='main_area'>
+
+        <div class='center'>
+        <!-- Replace the Button with the game div\script -->
+        <label hidden id="batata" class="button" for="dialog_state"><i class="icon ion-ios-upload-outline
+          "></i> Start Playing</label>
+      </div>
+    <div id='console'></div>
+    </main> 
+    
+    
+    <script
+    src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+    crossorigin="anonymous"></script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
         <script type="module" src="js/Card.js"></script>
         <script type="module" src="js/CardGenerator.js"></script>
         <script type="module" src="js/timer.js"></script>
-
+        <script type="module" src="/start/js/back.js"></script>
         
     
 </body>

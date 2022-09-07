@@ -10,3 +10,16 @@
 .finish{
     color: white;
 }
+
+#row.celebrate{
+  -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+
+.butt {
+    margin: 10px;
+}
+
+.elem {
+    margin: 10px;
+}

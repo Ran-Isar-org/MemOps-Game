@@ -6,7 +6,30 @@ import {StartTimer,StopTimer, ResetTimer} from '/js/timer.js';
 
 let finished = false;
 
-const number_of_cards = 6
+const queryString = window.location.search;
+console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
+const url_cards_number = urlParams.get('cards-number');
+const url_name = urlParams.get('name');
+const url_animal = urlParams.get('category');
+
+if (url_cards_number%2 != 0 && url_cards_number !=  null) {
+    alert("Number of cards must be even");
+    window.location.href = "/";
+}
+if ((url_cards_number > 61) && url_cards_number !=  null) {
+    alert("Number of cards must be less than 61");
+    window.location.href = "/";
+}
+
+if (url_cards_number != null && url_name != null) {
+    let find_dial = document.getElementById('dialog');
+    find_dial.parentNode.removeChild(find_dial);
+}
+
+document.getElementById("player_name").innerText = url_name
+
+const number_of_cards = Math.abs(url_cards_number)
 const positions = []
 const images = [] 
 const pos_to_card = new Map()
@@ -27,17 +50,42 @@ async function getData(url) {
     return response.json();
   }
 
-for (let card = 0; card < number_of_cards/2; card++) {
-    let image = images.pop()
-    const data = await getData("https://dog.ceo/api/breeds/image/random");
-    image = (data["message"])
-    let pos1 = positions.pop()
-    let pos2 = positions.pop()
-    const card1 = new Card(card, image, pos1, pos2)
-    const card2 = new Card(card, image, pos2, pos1)
-    pos_to_card.set(pos1, card1)
-    pos_to_card.set(pos2, card2)
+async function getCatData(url) {
+    const response = await fetch(url);
+    return response.json();
+  }
+
+if (url_animal == 'dog') {
+    for (let card = 0; card < number_of_cards/2; card++) {
+        let image = images.pop()
+        const data = await getData("https://dog.ceo/api/breeds/image/random");
+        image = (data["message"])
+        let pos1 = positions.pop()
+        let pos2 = positions.pop()
+        const card1 = new Card(card, image, pos1, pos2)
+        const card2 = new Card(card, image, pos2, pos1)
+        pos_to_card.set(pos1, card1)
+        pos_to_card.set(pos2, card2)
+    }
+    
 }
+
+if (url_animal == 'cat') {
+    for (let card = 0; card < number_of_cards/2; card++) {
+        let image = images.pop()
+        image = ("https://cataas.com/cat?json=true");
+        const data = await getCatData(image);
+        image = ('https://cataas.com/'+data["url"])
+        let pos1 = positions.pop()
+        let pos2 = positions.pop()
+        const card1 = new Card(card, image, pos1, pos2)
+        const card2 = new Card(card, image, pos2, pos1)
+        pos_to_card.set(pos1, card1)
+        pos_to_card.set(pos2, card2)
+    }
+    
+}
+
 
 let card_number = 0
 const row_div = document.createElement("div")
@@ -144,7 +192,7 @@ for (let index = 0; index < number_of_cards; index++) {
                     let finish = document.createElement("div")
                     finish.id = "finish"
                     finish.className = "collapse navbar-collapse finish"
-                    finish.innerHTML = `<label><h4>Game Finished!</h4>you did it in ${minutes.textContent} minutes, and ${seconds.textContent} seconds!</label>`
+                    finish.innerHTML = `<label><h4>${url_name}, game is Finished!</h4>you did it in ${minutes.textContent} minutes, and ${seconds.textContent} seconds!</label>`
 
                     let elem = document.createElement("html")
                     elem.id = "elem"
@@ -154,15 +202,28 @@ for (let index = 0; index < number_of_cards; index++) {
                     // add play again button
                     let play_again = document.createElement("button")
                     play_again.id = "play_again_btn"
-                    play_again.className = "btn btn-primary"
+                    play_again.className = "btn btn-primary butt"
                     play_again.textContent = "Play Again"
-                    
                     finish.appendChild(play_again)
+                    
+                    let reset_it = document.createElement("button")
+                    reset_it.id = "reset_it_btn"
+                    reset_it.className = "btn btn-primary butt"
+                    reset_it.textContent = "reset game"
+
                     document.getElementById('navbarNav').innerHTML = elem.innerHTML
+
+                    document.getElementById('finish').append(reset_it)
+
+                    document.getElementById('row').classList.add("celebrate")
 
                     document.getElementById("play_again_btn").addEventListener("click", function(){
                         ResetGame();
                         console.log("play again");
+                    })
+
+                    document.getElementById("reset_it_btn").addEventListener("click", function(){
+                        window.location.href = "/";
                     })
                 }
             })

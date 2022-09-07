@@ -8,10 +8,12 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0,0,0,0.15);
-  transition: visibility 0s linear 0.5s,opacity 0.5s linear;
+  backdrop-filter: blur(10px);
+  transition: visibility 0s linear 0.5s,opacity 0.1s linear;
   opacity: 0;
   visibility: hidden;
 }
+
 .dialog_state {
   visibility: hidden;
   opacity: 0;
@@ -43,7 +45,7 @@
   display: block;
   box-sizing: border-box;
   margin: 0 auto;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   width: 640px;
   padding: 2rem;
@@ -140,6 +142,18 @@ body {
   letter-spacing: -0.015em;
   color: #303030;
   text-align: center;
+}
+
+.form-group {
+  margin: 8px;
+}
+
+.ran {
+  /* center the element */
+  position: relative;
+  left: 42%;
+  padding-top: 0.3%;
+  padding-bottom: 0.6%;
 }
 /* #main {
   height: 100vh;
