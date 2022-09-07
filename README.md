@@ -4,18 +4,21 @@
 Ran Nahmany (רן נחמני) / ID: 209137421  
 Isar Nasimov (איסר נסימוב) / ID: 206960379
 
-<u>**Project Desciption:**</u> !! In this Search Engine you can search any Buzz word that ends with 'Ops' !!
-___
+<u>**Project Desciption:**</u> In this Memory game, you can choose your best friend and play with him. (or animal)
 
 
 ### **What's in it?**
-!! 1.  Search engine Home-page (html+css)
-2.  Search results page (html+css) !!
+1.  Start Game popup
+2.  actual game, timer and score
+3.  game over popup  
 
 ___
+## <u> Screenshots </u>
+**MemOps Start Game PopUp**  
+<img src="screenshots/screenshot1.png" alt="drawing" width="450"/>
 
-!! **GooglOps Home Page** !!
-<img src="screenshot1.jpg" alt="drawing" width="450"/>
+**MemOps Game**  
+<img src="screenshots/screenshot2.png" alt="drawing" width="600"/>
 
-!! **GooglOps Reuslts page**  !!
-<img src="screenshot2.jpg" alt="drawing" width="600"/>
+**Game Over PopUp**  
+<img src="screenshots/screenshot3.png" alt="drawing" width="600"/>
