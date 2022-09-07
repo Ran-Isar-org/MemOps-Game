@@ -15,10 +15,10 @@ Isar Nasimov (איסר נסימוב) / ID: 206960379
 ___
 ## <u> Screenshots </u>
 **MemOps Start Game PopUp**  
-<img src="screenshots/screenshot1.png" alt="drawing" width="450"/>
+<img src="/screenshots/screenshot1.png" alt="drawing" width="450"/>
 
 **MemOps Game**  
-<img src="screenshots/screenshot2.png" alt="drawing" width="600"/>
+<img src="/screenshots/screenshot2.png" alt="drawing" width="600"/>
 
 **Game Over PopUp**  
-<img src="screenshots/screenshot3.png" alt="drawing" width="600"/>
+<img src="/screenshots/screenshot3.png" alt="drawing" width="600"/>
